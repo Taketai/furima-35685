@@ -2,16 +2,16 @@
 
 ## users テーブル
 
-| Column         | Type   | Options     |
-| -------------- | ------ | ----------- |
-| nickname       | string | null: false |
-| email          | string | null: false |
-| user_password  | string | null: false |
-| last_name      | string | null: false |
-| first_name     | string | null: false |
-| last_name_kana | string | null: false |
-| first_name_kana| string | null: false |
-| birth_day      | date   | null: false |
+| Column             | Type   | Options                  |
+| ------------------ | ------ | ------------------------ |
+| nickname           | string | null: false              |
+| email              | string | null: false,unique: true |
+| encrypted_password | string | null: false              |
+| last_name          | string | null: false              |
+| first_name         | string | null: false              |
+| last_name_kana     | string | null: false              |
+| first_name_kana    | string | null: false              |
+| birth_day          | date   | null: false              |
 
 ### Association
 
@@ -23,14 +23,10 @@
 |   Column       |  Type   |   Options                      |
 | -------------- | ------- | ------------------------------ |
 | user_id        | integer | null: false, foreign_key: true |
-| last_name      | string  | null: false                    |
-| first_name     | string  | null: false                    |
-| last_name_kana | string  | null: false                    |
-| first_name_kana| string  | null: false                    |
 | post_code      | string  | null: false                    |
 | prefecture     | string  | null: false                    |
-| city | string  | string  | null: false                    |
-| address| string| string  | null: false                    |
+| city           | string  | null: false                    |
+| address        | string  | null: false                    |
 | building_name  | string  |                                |
 | phone_number   | string  |                                |
 
@@ -40,18 +36,18 @@
 
 ## products テーブル
 
-|  Column       |  Type   |  Options                       |
-| ------------- | ------- | ------------------------------ |
-| product_name  | string  | null: false                    |
-| description   | string  | null: false                    |
-| category      | string  | null: false                    |
-| judgment      | string  | null: false                    |
-| shipping_cost | string  | null: false                    |
-| shipping_area | string  | null: false                    |
-| shipping_days | string  | null: false                    |
-| price         | string  | null: false                    |
-| shipping_id   | integer | null: false, foreign_key: true |
-| user_id       | integer | null: false, foreign_key: true |
+|  Column          |  Type   |  Options                       |
+| ---------------- | ------- | ------------------------------ |
+| product_name     | string  | null: false                    |
+| description      | text    | null: false                    |
+| category_id      | integer | null: false, foreign_key: true |
+| judgement_id     | integer | null: false, foreign_key: true |
+| shipping_cost_id | integer | null: false, foreign_key: true |
+| shipping_area_id | integer | null: false, foreign_key: true |
+| shipping_days_id | integer | null: false, foreign_key: true |
+| price            | integer | null: false                    |
+| shipping_id      | integer | null: false, foreign_key: true |
+| user_id          | integer | null: false, foreign_key: true |
 
 ### Association
 
