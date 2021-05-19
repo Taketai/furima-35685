@@ -24,16 +24,13 @@
 |   Column       |  Type      |   Options                      |
 | -------------- | ---------- | ------------------------------ |
 | user           | references | null: false, foreign_key: true |
-| post_code      | string     | null: false                    |
-| prefecture     | string     | null: false                    |
-| city           | string     | null: false                    |
 | product_id     | integer    | null: false                    |
+
 
 ### Association
 
-- has_one    :product
+- belongs_to :product
 - belongs_to :user
-- belongs_to :information
 
 
 ## information テーブル
@@ -42,11 +39,14 @@
 | -------------- | ---------- | ------------------------------ |
 | address        | string     | null: false                    |
 | building_name  | string     |                                |
-| phone_number   | string     |                                |
+| phone_number   | string     | null: false                    |
+| post_code      | string     | null: false                    |
+| prefecture     | string     | null: false                    |
+| city           | string     | null: false                    |
 
 ### Association
 
-- belongs_to :purchase
+- has_one :purchase
 
 
 ## products テーブル
