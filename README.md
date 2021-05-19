@@ -24,29 +24,30 @@
 |   Column       |  Type      |   Options                      |
 | -------------- | ---------- | ------------------------------ |
 | user           | references | null: false, foreign_key: true |
-| product_id     | integer    | null: false                    |
+| product        | references | null: false, foreign_key: true |
 
 
 ### Association
 
 - belongs_to :product
 - belongs_to :user
+- has_one    :information
 
 
 ## information テーブル
 
-|   Column       |  Type      |   Options                      |
-| -------------- | ---------- | ------------------------------ |
-| address        | string     | null: false                    |
-| building_name  | string     |                                |
-| phone_number   | string     | null: false                    |
-| post_code      | string     | null: false                    |
-| prefecture     | string     | null: false                    |
-| city           | string     | null: false                    |
+|   Column         |  Type      |   Options                      |
+| ---------------- | ---------- | ------------------------------ |
+| address          | string     | null: false                    |
+| building_name    | string     |                                |
+| phone_number     | string     | null: false                    |
+| post_code        | string     | null: false                    |
+| shipping_area_id | integer    | null: false, foreign_key: true |
+| city             | string     | null: false                    |
 
 ### Association
 
-- has_one :purchase
+- belongs_to :purchase
 
 
 ## products テーブル
@@ -66,4 +67,4 @@
 ### Association
 
 - belongs_to :user
-- belongs_to :purchase
+- has_one    :purchase
