@@ -63,8 +63,8 @@ describe User, type: :model do
         expect(@user.errors.full_messages).to include("First name can't be blank", "First name is invalid")
       end
       it "last_nameとfirst_nameが半角文字だと登録できない" do
-        @user.last_name = "yamada"
-        @user.first_name = "tarou"
+        @user.last_name = "matsui"
+        @user.first_name = "takeo"
         @user.valid?
         expect(@user.errors.full_messages).to include("Last name is invalid", "First name is invalid")
       end
@@ -79,8 +79,8 @@ describe User, type: :model do
       expect(@user.errors.full_messages).to include("First name kana can't be blank", "First name kana is invalid")
       end
       it "last_name_kanaとfirst_name_kanaがカタカナでないと登録できない" do
-        @user.last_name_kana = "yamada"
-        @user.first_name_kana = "tarou"
+        @user.last_name_kana = "matsui"
+        @user.first_name_kana = "takeo"
         @user.valid?
         expect(@user.errors.full_messages).to include("Last name kana is invalid", "First name kana is invalid")
       end
