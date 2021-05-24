@@ -72,13 +72,13 @@ RSpec.describe Item, type: :model do
       end
 
       it 'priceが299以下だと登録できない' do
-        @item.price = '299'
+        @item.price = 299
         @item.valid?
         expect(@item.errors.full_messages).to include("Price must be greater than 300")
       end
 
       it 'priceが10000000以上だと登録できない' do
-        @item.price = "10000000"
+        @item.price = 10000000
         @item.valid?
         expect(@item.errors.full_messages).to include("Price must be less than 9999999")
       end
@@ -87,6 +87,48 @@ RSpec.describe Item, type: :model do
         @item.price = "１０００"
         @item.valid?
         expect(@item.errors.full_messages).to include("Price is not a number")
+      end
+
+      it 'priceが半角英数字混合では登録できない' do
+        @item.price = "10ad"
+        @item.valid?
+        expect(@item.errors.full_messages).to include("Price is not a number")
+      end
+
+      it 'priceが半角英字のみでは登録できない' do
+        @item.price = "takeo"
+        @item.valid?
+        expect(@item.errors.full_messages).to include("Price is not a number")
+      end
+
+      it 'category_idに1が選択されている場合は出品できない' do
+        @item.category_id = '1'
+        @item.valid?
+        expect(@item.errors.full_messages).to include('Category must be other than 1')
+      end
+
+      it 'judgement_idに1が選択されている場合は出品できない' do
+        @item.judgement_id = '1'
+        @item.valid?
+        expect(@item.errors.full_messages).to include('Judgement must be other than 1')
+      end
+
+      it 'shipping_cost_idに1が選択されている場合は出品できない' do
+        @item.shipping_cost_id = '1'
+        @item.valid?
+        expect(@item.errors.full_messages).to include('Shipping cost must be other than 1')
+      end
+
+      it 'shipping_cost_idに1が選択されている場合は出品できない' do
+        @item.shipping_area_id = '1'
+        @item.valid?
+        expect(@item.errors.full_messages).to include('Shipping area must be other than 1')
+      end
+
+      it 'shipping_days_idに1が選択されている場合は出品できない' do
+        @item.shipping_days_id = '1'
+        @item.valid?
+        expect(@item.errors.full_messages).to include('Shipping days must be other than 1')
       end
 
     end
