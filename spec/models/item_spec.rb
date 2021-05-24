@@ -13,6 +13,18 @@ RSpec.describe Item, type: :model do
         expect(@item).to be_valid
       end
 
+      it "priceが300だと登録できる" do
+        @item.price = 300
+        @item.valid?
+        expect(@item.price).to eq be_valid
+      end
+
+      it "priceが9999999だと登録できる" do
+        @item.price = 9999999
+        @item.valid?
+        expect(@item.price).to eq be_valid
+      end
+
     end
 
     context '商品出品がうまくいかないとき' do
@@ -102,31 +114,31 @@ RSpec.describe Item, type: :model do
       end
 
       it 'category_idに1が選択されている場合は出品できない' do
-        @item.category_id = '1'
+        @item.category_id = 1
         @item.valid?
         expect(@item.errors.full_messages).to include('Category must be other than 1')
       end
 
       it 'judgement_idに1が選択されている場合は出品できない' do
-        @item.judgement_id = '1'
+        @item.judgement_id = 1
         @item.valid?
         expect(@item.errors.full_messages).to include('Judgement must be other than 1')
       end
 
       it 'shipping_cost_idに1が選択されている場合は出品できない' do
-        @item.shipping_cost_id = '1'
+        @item.shipping_cost_id = 1
         @item.valid?
         expect(@item.errors.full_messages).to include('Shipping cost must be other than 1')
       end
 
       it 'shipping_cost_idに1が選択されている場合は出品できない' do
-        @item.shipping_area_id = '1'
+        @item.shipping_area_id = 1
         @item.valid?
         expect(@item.errors.full_messages).to include('Shipping area must be other than 1')
       end
 
       it 'shipping_days_idに1が選択されている場合は出品できない' do
-        @item.shipping_days_id = '1'
+        @item.shipping_days_id = 1
         @item.valid?
         expect(@item.errors.full_messages).to include('Shipping days must be other than 1')
       end
