@@ -94,6 +94,12 @@ RSpec.describe ItemOrder, type: :model do
         expect(@item_order.errors.full_messages).to include('Phone number is invalid')
       end
 
+      it 'phone_numberが全角数字だと登録できない' do
+        @item_order.phone_number = '０９０１２３４５６７８'
+        @item_order.valid?
+        expect(@item_order.errors.full_messages).to include('Phone number is invalid')
+      end
+
       it 'user_idが存在しないと登録できない' do
         @item_order.user_id = nil
         @item_order.valid?
