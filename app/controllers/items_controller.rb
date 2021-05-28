@@ -26,9 +26,7 @@ class ItemsController < ApplicationController
   end
 
   def edit
-    if @item.order != nil
-      redirect_to root_path
-    end
+
   end
 
   def update
@@ -58,8 +56,10 @@ class ItemsController < ApplicationController
   def move_to_root_path
     if current_user.id != @item.user_id
       redirect_to root_path
+    else
+      if @item.order != nil
+        redirect_to root_path    
+      end
     end
-
   end
-
 end
