@@ -21,9 +21,7 @@ class OrdersController < ApplicationController
 
   def set_item
     @item = Item.find(params[:item_id])
-    unless current_user.id == @item.user_id || @item.order != nil
-
-    else
+    unless current_user.id != @item.user_id && @item.order == nil
       redirect_to root_path
     end
   end
