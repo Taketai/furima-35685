@@ -1,7 +1,10 @@
   
 class Item < ApplicationRecord
   extend ActiveHash::Associations::ActiveRecordExtensions
+  
   belongs_to :user
+  has_one :order
+
   has_one_attached :image
 
   belongs_to_active_hash :category
@@ -18,7 +21,7 @@ class Item < ApplicationRecord
     end
     
     with_options format: { with: /\A[0-9]+\z/ } do
-      validates :price, numericality: { greater_than: 300, less_than: 9999999 } 
+      validates :price, numericality: { greater_than: 299, less_than: 10000000 } 
     end
 
   end
