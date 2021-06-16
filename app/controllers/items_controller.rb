@@ -42,6 +42,9 @@ class ItemsController < ApplicationController
       redirect_to root_path
   end
 
+  def gaiyou
+
+  end
 
   private
 

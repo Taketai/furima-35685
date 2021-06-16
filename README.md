@@ -51,7 +51,7 @@
 - belongs_to :order
 
 
-## items テーブル
+## donations テーブル
 
 |  Column          |  Type      |  Options                       |
 | ---------------- | ---------- | ------------------------------ |
